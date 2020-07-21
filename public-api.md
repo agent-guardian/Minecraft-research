@@ -24,3 +24,5 @@ Our first packet going to the server contains the server's hostname (so I'm goin
 ```
 
 With just a bit of counting we can discover that the byte at 0x04 is the length of the hostname in ascii. Following this (starting at 0x05) is the hostname. The packet ends with 0x63 dd 01, this appears to be the same in all of these request packets, so this is probably a request terminator.
+
+In order for this protocol to be valid the client must send another packet only consisting of ```0100```, if the client fails to do this the server will not send a response.
