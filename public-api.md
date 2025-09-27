@@ -23,6 +23,18 @@ Our first packet going to the server contains the server's hostname (so I'm goin
 0x20   01                                                .                                                .
 ```
 
-With just a bit of counting we can discover that the byte at 0x04 is the length of the hostname in ascii. Following this (starting at 0x05) is the hostname. The packet ends with 0x63 dd 01, this appears to be the same in all of these request packets, so this is probably a request terminator.
+The packet starts with the length of the packet as one unsigned byte. 
 
-In order for this protocol to be valid the client must send another packet only consisting of ```0100```, if the client fails to do this the server will not send a response.
+The next 3 bytes ( 0x01 to 0x03 ) are constant and are always ```00 c2 04```, This is probably some identifier.
+The byte at 0x05 is the length of the server's hostname in ascii, this is followed by the hostname in ascii encoding.
+The packet is terminated by ```01```.
+
+The two or three bytes after the hostname and before the terminator is one of the following in my test cases:
+```
+63 dd
+2e 55 f3
+2e 63 dd
+```
+I'm not sure what these bytes are yet.
+
+In order for this protocol to be valid the client must send another packet only consisting of ```01 00```, if the client fails to do this the server will not send a response.
