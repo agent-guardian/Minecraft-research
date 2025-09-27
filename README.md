@@ -1,2 +1,2 @@
-# Minecraft-research
-Just a repo of write-ups of my minecraft security research
+# Minecraft Research
+Just a repo of write-ups of my minecraft security research.
