@@ -20,7 +20,7 @@ Our first packet going to the server contains the server's hostname (so I'm goin
 ```
 0x00   20 00 c2 04 19 XX XX XX XX XX XX XX XX XX XX XX
 0x10   XX XX XX XX XX XX XX XX XX XX XX XX XX XX 63 dd
-0x20   01                                                .                                                .
+0x20   01
 ```
 
 The packet starts with the length of the packet as one unsigned byte. 
