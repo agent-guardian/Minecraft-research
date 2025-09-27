@@ -275,10 +275,10 @@ print_json_key_structure = args.keys
 check_new_json_keys = args.new
 text_color_formatting = args.color
 
-print(str(args))
-
-print(str(print_raw_json))
-print(str(raw_json_file))
-print(str(print_json_key_structure))
-print(str(check_new_json_keys))
-print(str(text_color_formatting))
+for hostname in args.hostname[0]:
+    if ":" in hostname:
+        host = hostname[0:hostname.find(":")]
+        port = hostname[hostname.find(":") + 1:]
+        main(host,int(port))
+    else:
+        main(hostname)
